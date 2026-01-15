@@ -179,16 +179,7 @@ params:
       post: ""
       typeit: true
 
-markup:
-  goldmark:
-    renderer:
-      unsafe: false
-  tableOfContents:
-    endLevel: 4
-    ordered: true
-    startLevel: 2
-  highlight:
-    noClasses: true
+
 
 related:
   includeNewer: true
