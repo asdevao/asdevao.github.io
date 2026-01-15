@@ -1,0 +1,9 @@
+{{- $code := .Inner -}}
+{{- $lang := .Attributes.lang | default "goat" -}}
+{{- $filename := .Attributes.filename | default "" -}}
+<div class="code-block">
+  {{- if $filename -}}
+    <div class="code-filename">{{ $filename }}</div>
+  {{- end -}}
+  <pre><code class="language-{{ $lang }}">{{ $code }}</code></pre>
+</div>
