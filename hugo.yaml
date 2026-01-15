@@ -1,6 +1,5 @@
 baseurl: https://asdevao.github.io
 languageCode: zh-cn
-theme: LoveIt
 title: Asdevao's Tech Hub
 pagination:
   pagerSize: 5
