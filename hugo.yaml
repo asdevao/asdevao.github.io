@@ -182,7 +182,7 @@ params:
 markup:
   goldmark:
     renderer:
-      unsafe: true
+      unsafe: false
   tableOfContents:
     endLevel: 4
     ordered: true
