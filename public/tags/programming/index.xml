@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Programming - 标签 - Asdevao&#39;s Tech Hub</title>
+        <link>https://asdevao.github.io/tags/programming/</link>
+        <description>Programming - 标签 - Asdevao&#39;s Tech Hub</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Asdevao</copyright><lastBuildDate>Tue, 14 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://asdevao.github.io/tags/programming/" rel="self" type="application/rss+xml" /><item>
+    <title>Python异步编程入门指南</title>
+    <link>https://asdevao.github.io/post/python-async-programming-guide/</link>
+    <pubDate>Tue, 14 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/post/python-async-programming-guide/</guid>
+    <description><![CDATA[Python异步编程入门指南 异步编程是现代Python开发中的重要技能。本文将带你从基础概念到实际应用，掌握asyncio的核心用法。 为什么]]></description>
+</item>
+</channel>
+</rss>

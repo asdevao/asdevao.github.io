@@ -1,1 +1,87 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Example Site</title><link>https://example.com/tags/</link><description>Recent content in Tags on Example Site</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Peter</copyright><lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Css</title><link>https://example.com/tags/css/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/tags/css/</guid><description/></item><item><title>Html</title><link>https://example.com/tags/html/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/tags/html/</guid><description/></item><item><title>Markdown</title><link>https://example.com/tags/markdown/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/tags/markdown/</guid><description/></item><item><title>Themes</title><link>https://example.com/tags/themes/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/tags/themes/</guid><description/></item><item><title>Tag With Whitespaces</title><link>https://example.com/tags/tag-with-whitespaces/</link><pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/tags/tag-with-whitespaces/</guid><description/></item><item><title>Text</title><link>https://example.com/tags/text/</link><pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/tags/text/</guid><description/></item><item><title>Emoji</title><link>https://example.com/tags/emoji/</link><pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/tags/emoji/</guid><description/></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - 标签 - Asdevao&#39;s Tech Hub</title>
+        <link>https://asdevao.github.io/tags/</link>
+        <description>Tags - 标签 - Asdevao&#39;s Tech Hub</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Asdevao</copyright><lastBuildDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://asdevao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>AI</title>
+    <link>https://asdevao.github.io/tags/ai/</link>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/ai/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Automation</title>
+    <link>https://asdevao.github.io/tags/automation/</link>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/automation/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Future</title>
+    <link>https://asdevao.github.io/tags/future/</link>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/future/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Software-Development</title>
+    <link>https://asdevao.github.io/tags/software-development/</link>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/software-development/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Async</title>
+    <link>https://asdevao.github.io/tags/async/</link>
+    <pubDate>Tue, 14 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/async/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Programming</title>
+    <link>https://asdevao.github.io/tags/programming/</link>
+    <pubDate>Tue, 14 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/programming/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Python</title>
+    <link>https://asdevao.github.io/tags/python/</link>
+    <pubDate>Tue, 14 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/python/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Tutorial</title>
+    <link>https://asdevao.github.io/tags/tutorial/</link>
+    <pubDate>Tue, 14 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/tutorial/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Introduction</title>
+    <link>https://asdevao.github.io/tags/introduction/</link>
+    <pubDate>Mon, 13 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/introduction/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Tech</title>
+    <link>https://asdevao.github.io/tags/tech/</link>
+    <pubDate>Mon, 13 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/tags/tech/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

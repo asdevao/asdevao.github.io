@@ -1,0 +1,261 @@
+<!-- 侧边栏语言切换器 -->
+<div class="sidebar-language-toggle">
+  <button id="lang-toggle-btn" class="lang-toggle-btn">
+    <span class="lang-text" id="current-lang-text">中文</span>
+    <span class="lang-icon">🌐</span>
+  </button>
+</div>
+
+<script>
+// 侧边栏内容切换功能
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.getElementById('lang-toggle-btn');
+  const currentLangText = document.getElementById('current-lang-text');
+
+  // 中文侧边栏内容
+  const chineseSidebar = {
+    subtitle: "记录编程之旅，探索AI无限可能",
+    emoji: "🚀"
+  };
+
+  // 英文侧边栏内容
+  const englishSidebar = {
+    subtitle: "Documenting the coding journey, exploring infinite possibilities of AI",
+    emoji: "🚀"
+  };
+
+  let isChinese = true;
+
+  function updateSidebarContent(content) {
+    // 查找侧边栏副标题元素
+    const subtitleElement = document.querySelector('.sidebar .subtitle');
+    const emojiElement = document.querySelector('.sidebar .emoji');
+
+    if (subtitleElement) {
+      subtitleElement.textContent = content.subtitle;
+    }
+    if (emojiElement) {
+      emojiElement.textContent = content.emoji;
+    }
+
+    // 更新菜单项文本
+    updateMenuItems(isChinese);
+  }
+
+  function updateMenuItems(isChinese) {
+    const menuTexts = isChinese ? {
+      'home': '首页',
+      'archives': '归档',
+      'categories': '分类',
+      'tags': '标签',
+      'search': '搜索',
+      'about': '关于'
+    } : {
+      'home': 'Home',
+      'archives': 'Archives',
+      'categories': 'Categories',
+      'tags': 'Tags',
+      'search': 'Search',
+      'about': 'About'
+    };
+
+    // 更新菜单链接文本
+    const menuLinks = document.querySelectorAll('.menu__inner a');
+    menuLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === '/' || href === '/#') {
+        link.textContent = menuTexts.home;
+      } else if (href && href.includes('/archives/')) {
+        link.textContent = menuTexts.archives;
+      } else if (href && href.includes('/categories/')) {
+        link.textContent = menuTexts.categories;
+      } else if (href && href.includes('/tags/')) {
+        link.textContent = menuTexts.tags;
+      } else if (href && href.includes('/search/')) {
+        link.textContent = menuTexts.search;
+      } else if (href && href.includes('/about/')) {
+        link.textContent = menuTexts.about;
+      }
+    });
+  }
+
+  toggleBtn.addEventListener('click', function() {
+    isChinese = !isChinese;
+
+    if (isChinese) {
+      currentLangText.textContent = '中文';
+      updateSidebarContent(chineseSidebar);
+    } else {
+      currentLangText.textContent = 'English';
+      updateSidebarContent(englishSidebar);
+    }
+
+    // 添加切换动画
+    toggleBtn.classList.add('switching');
+    setTimeout(() => {
+      toggleBtn.classList.remove('switching');
+    }, 300);
+  });
+
+  // 初始化为中文
+  updateSidebarContent(chineseSidebar);
+
+  // 归档页面视图切换功能
+  document.addEventListener('DOMContentLoaded', function() {
+    const timelineView = document.getElementById('timeline-view');
+    const gridView = document.getElementById('grid-view');
+    const archiveContainer = document.querySelector('.archive-container');
+
+    if (timelineView && gridView && archiveContainer) {
+      // 默认时间线视图
+      timelineView.classList.add('active');
+
+      timelineView.addEventListener('click', function() {
+        timelineView.classList.add('active');
+        gridView.classList.remove('active');
+        archiveContainer.className = 'archive-container timeline-view';
+      });
+
+      gridView.addEventListener('click', function() {
+        gridView.classList.add('active');
+        timelineView.classList.remove('active');
+        archiveContainer.className = 'archive-container grid-view';
+      });
+    }
+
+    // 归档页面动画
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // 观察时间线项目
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(30px)';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(item);
+    });
+
+    // 观察网格卡片
+    document.querySelectorAll('.archive-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  });
+});
+</script>
+
+<!-- 粒子背景动画 -->
+<canvas id="particle-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animationId;
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.5 + 0.2
+      });
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(particle => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+
+      // Wrap around edges
+      if (particle.x < 0) particle.x = canvas.width;
+      if (particle.x > canvas.width) particle.x = 0;
+      if (particle.y < 0) particle.y = canvas.height;
+      if (particle.y > canvas.height) particle.y = 0;
+
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(102, 126, 234, ${particle.opacity})`;
+      ctx.fill();
+
+      // Draw connections
+      particles.forEach(otherParticle => {
+        const dx = particle.x - otherParticle.x;
+        const dy = particle.y - otherParticle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 100) {
+          ctx.beginPath();
+          ctx.moveTo(particle.x, particle.y);
+          ctx.lineTo(otherParticle.x, otherParticle.y);
+          ctx.strokeStyle = `rgba(102, 126, 234, ${(100 - distance) / 100 * 0.1})`;
+          ctx.stroke();
+        }
+      });
+    });
+
+    animationId = requestAnimationFrame(animateParticles);
+  }
+
+  // Initialize
+  resizeCanvas();
+  createParticles();
+  animateParticles();
+
+  // Handle resize
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    createParticles();
+  });
+
+  // Pause animation when page is not visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animationId);
+    } else {
+      animateParticles();
+    }
+  });
+});
+</script>
+
+{{ if .IsHome }}
+<!-- 桃濑日和风格看板娘 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.css" />
+<div id="sakana-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;"></div>
+<script>
+function initSakanaWidget() {
+  new SakanaWidget().mount('#sakana-widget');
+}
+</script>
+<script async onload="initSakanaWidget()" src="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.0/lib/sakana.min.js"></script>
+{{ end }}

@@ -1,0 +1,433 @@
+{{- define "title" }}{{ .Title }} - {{ .Site.Title }}{{- end }}
+
+{{- define "content" }}
+<div class="page search-page">
+  <div class="search-header">
+    <h1 class="search-title">{{ .Title }}</h1>
+    <p class="search-description">{{ .Description | default "Search through all posts and pages" }}</p>
+  </div>
+
+  <div class="search-wrapper">
+    <div class="search-input-container">
+      <input type="text" id="search-input-page" placeholder="{{ .Site.Params.search.placeholder | default "Search articles..." }}" class="search-input">
+      <button class="search-button" id="search-button-page">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="search-clear" id="search-clear-page" style="display: none;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="search-stats">
+      <span id="search-stats">共 {{ len .Site.RegularPages }} 篇文章</span>
+    </div>
+  </div>
+
+  <div class="search-results" id="search-results-page">
+    <div class="search-placeholder">
+      <i class="fas fa-search fa-3x"></i>
+      <p>输入关键词开始搜索</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.search-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.search-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.search-title {
+  font-size: 2.5rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.search-description {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-wrapper {
+  margin-bottom: 3rem;
+  background: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px var(--color-shadow);
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-link);
+  box-shadow: 0 0 0 3px rgba(var(--color-link-rgb), 0.1);
+}
+
+.search-button, .search-clear {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-link);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.search-button:hover {
+  background: var(--color-link-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-clear {
+  background: var(--color-text-secondary);
+}
+
+.search-clear:hover {
+  background: #666;
+  transform: translateY(-1px);
+}
+
+.search-stats {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.search-results {
+  min-height: 400px;
+}
+
+.search-placeholder {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: 4rem 2rem;
+}
+
+.search-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.search-placeholder p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.search-result-item {
+  background: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.search-result-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-link);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-result-item:hover {
+  border-color: var(--color-link);
+  box-shadow: 0 8px 25px var(--color-shadow);
+  transform: translateY(-2px);
+}
+
+.search-result-item:hover::before {
+  opacity: 1;
+}
+
+.search-result-title {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.search-result-title a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.search-result-title a:hover {
+  color: var(--color-link);
+}
+
+.search-result-content {
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.search-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  position: relative;
+  z-index: 1;
+}
+
+.search-result-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.search-loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-text-secondary);
+}
+
+.search-loading i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.search-no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-text-secondary);
+}
+
+.search-no-results i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.search-no-results h3 {
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .search-page {
+    padding: 1rem 0.5rem;
+  }
+
+  .search-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .search-title {
+    font-size: 2rem;
+  }
+
+  .search-wrapper {
+    padding: 1.5rem;
+  }
+
+  .search-input-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .search-button, .search-clear {
+    width: 100%;
+    padding: 0.875rem 1rem;
+  }
+
+  .search-result-item {
+    padding: 1.5rem;
+  }
+
+  .search-result-title a {
+    font-size: 1.25rem;
+  }
+
+  .search-result-meta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input-page');
+  const searchButton = document.getElementById('search-button-page');
+  const searchClear = document.getElementById('search-clear-page');
+  const searchResults = document.getElementById('search-results-page');
+
+  let searchIndex = null;
+  let searchConfig = null;
+
+  // Load search index and config
+  fetch('/index.json')
+    .then(response => response.json())
+    .then(data => {
+      searchIndex = data;
+      searchConfig = {
+        maxResultLength: 10,
+        snippetLength: 50,
+        highlightTag: 'em'
+      };
+    })
+    .catch(error => {
+      console.error('Failed to load search index:', error);
+      searchResults.innerHTML = '<div class="search-no-results"><i class="fas fa-exclamation-triangle"></i><p>搜索功能加载失败</p></div>';
+    });
+
+  function performSearch(query) {
+    if (!searchIndex || !query.trim()) {
+      return [];
+    }
+
+    const results = [];
+    const lowerQuery = query.toLowerCase();
+
+    searchIndex.forEach(item => {
+      const title = item.title ? item.title.toLowerCase() : '';
+      const content = item.content ? item.content.toLowerCase() : '';
+      const tags = item.tags ? item.tags.join(' ').toLowerCase() : '';
+      const categories = item.categories ? item.categories.join(' ').toLowerCase() : '';
+
+      let score = 0;
+      if (title.includes(lowerQuery)) score += 10;
+      if (content.includes(lowerQuery)) score += 5;
+      if (tags.includes(lowerQuery)) score += 3;
+      if (categories.includes(lowerQuery)) score += 2;
+
+      if (score > 0) {
+        // Generate snippet
+        const snippet = generateSnippet(content, lowerQuery);
+        results.push({
+          ...item,
+          score,
+          snippet
+        });
+      }
+    });
+
+    return results.sort((a, b) => b.score - a.score).slice(0, searchConfig.maxResultLength);
+  }
+
+  function generateSnippet(content, query) {
+    const index = content.indexOf(query);
+    if (index === -1) return content.substring(0, searchConfig.snippetLength) + '...';
+
+    const start = Math.max(0, index - searchConfig.snippetLength / 2);
+    const end = Math.min(content.length, start + searchConfig.snippetLength);
+    let snippet = content.substring(start, end);
+
+    if (start > 0) snippet = '...' + snippet;
+    if (end < content.length) snippet += '...';
+
+    // Highlight query
+    const regex = new RegExp(`(${query})`, 'gi');
+    snippet = snippet.replace(regex, `<${searchConfig.highlightTag}>$1</${searchConfig.highlightTag}>`);
+
+    return snippet;
+  }
+
+  function displayResults(results, query) {
+    if (results.length === 0) {
+      searchResults.innerHTML = `<div class="search-no-results"><i class="fas fa-search"></i><p>没有找到包含"${query}"的结果</p></div>`;
+      return;
+    }
+
+    const resultsHtml = results.map(result => `
+      <div class="search-result-item">
+        <div class="search-result-title">
+          <a href="${result.permalink}">${result.title}</a>
+        </div>
+        <div class="search-result-content">
+          ${result.snippet}
+        </div>
+        <div class="search-result-meta">
+          <span>${result.date ? new Date(result.date).toLocaleDateString('zh-CN') : ''}</span>
+          ${result.tags && result.tags.length > 0 ? `<span>标签: ${result.tags.join(', ')}</span>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    searchResults.innerHTML = resultsHtml;
+  }
+
+  function showLoading() {
+    searchResults.innerHTML = '<div class="search-loading"><i class="fas fa-spinner fa-spin"></i><p>搜索中...</p></div>';
+  }
+
+  // Event listeners
+  searchInput.addEventListener('input', function() {
+    const query = this.value.trim();
+    searchClear.style.display = query ? 'inline-block' : 'none';
+
+    if (query) {
+      showLoading();
+      const results = performSearch(query);
+      displayResults(results, query);
+    } else {
+      searchResults.innerHTML = '<div class="search-placeholder"><i class="fas fa-search fa-3x"></i><p>输入关键词开始搜索</p></div>';
+    }
+  });
+
+  searchButton.addEventListener('click', function() {
+    searchInput.dispatchEvent(new Event('input'));
+  });
+
+  searchClear.addEventListener('click', function() {
+    searchInput.value = '';
+    searchInput.dispatchEvent(new Event('input'));
+    searchInput.focus();
+  });
+
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      searchButton.click();
+    }
+  });
+});
+</script>
+
+{{- end }}

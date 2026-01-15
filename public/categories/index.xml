@@ -1,1 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on Example Site</title><link>https://example.com/categories/</link><description>Recent content in Categories on Example Site</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Peter</copyright><lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Syntax</title><link>https://example.com/categories/syntax/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/categories/syntax/</guid><description/></item><item><title>Themes</title><link>https://example.com/categories/themes/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/categories/themes/</guid><description/></item><item><title>Test With Whitespaces</title><link>https://example.com/categories/test-with-whitespaces/</link><pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate><guid>https://example.com/categories/test-with-whitespaces/</guid><description/></item><item><title>Test</title><link>https://example.com/categories/test/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/categories/test/</guid><description>&lt;img src="https://example.com/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - 分类 - Asdevao&#39;s Tech Hub</title>
+        <link>https://asdevao.github.io/categories/</link>
+        <description>Categories - 分类 - Asdevao&#39;s Tech Hub</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Asdevao</copyright><lastBuildDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://asdevao.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>AI</title>
+    <link>https://asdevao.github.io/categories/ai/</link>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/categories/ai/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Technology</title>
+    <link>https://asdevao.github.io/categories/technology/</link>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/categories/technology/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Programming</title>
+    <link>https://asdevao.github.io/categories/programming/</link>
+    <pubDate>Tue, 14 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/categories/programming/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Personal</title>
+    <link>https://asdevao.github.io/categories/personal/</link>
+    <pubDate>Mon, 13 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/categories/personal/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

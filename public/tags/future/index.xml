@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Future - 标签 - Asdevao&#39;s Tech Hub</title>
+        <link>https://asdevao.github.io/tags/future/</link>
+        <description>Future - 标签 - Asdevao&#39;s Tech Hub</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Asdevao</copyright><lastBuildDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://asdevao.github.io/tags/future/" rel="self" type="application/rss+xml" /><item>
+    <title>AI时代的软件开发新范式</title>
+    <link>https://asdevao.github.io/post/ai-era-software-development/</link>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://asdevao.github.io/post/ai-era-software-development/</guid>
+    <description><![CDATA[AI时代的软件开发新范式 人工智能正在重塑软件开发的每一个环节。从代码生成到测试部署，AI工具正在改变开发者的工作方式。 AI编程助手的崛起 GitHub Copilot]]></description>
+</item>
+</channel>
+</rss>

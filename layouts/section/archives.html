@@ -1,0 +1,149 @@
+{{- define "title" }}{{ .Title }} - {{ .Site.Title }}{{- end }}
+
+{{- define "content" }}
+<div class="page archives">
+  <div class="archives-header">
+    <h1 class="archives-title">{{ .Title }}</h1>
+
+  </div>
+
+  <div class="posts">
+    {{- $pages := (where .Site.RegularPages ".Section" "post").ByDate.Reverse -}}
+    {{- range $pages -}}
+    <article class="post-entry">
+      {{- $isHiddenFromHomePage := .Params.hiddenfromhomepage | default false -}}
+      {{- $isStickied := .Params.stickied | default false -}}
+      {{- $link := .RelPermalink -}}
+      {{- with .Params.externalUrl -}}
+        {{- $link = . -}}
+      {{- end -}}
+
+      <header class="entry-header">
+        <h2 class="entry-title">
+          <a class="entry-link" rel="bookmark" href="{{ $link }}">{{ .Title }}</a>
+        </h2>
+      </header>
+
+      <div class="entry-content">
+        <p>{{ .Summary | truncate 200 }}</p>
+      </div>
+
+      <footer class="entry-footer">
+        <div class="meta">
+          <span class="posted-on">
+            <time class="published" datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">
+              {{ .PublishDate.Format (default "2006-01-02" .Site.Params.dateFormat.published) }}
+            </time>
+          </span>
+
+          {{- with .ReadingTime -}}
+          <span class="reading-time">
+            {{ . }} {{ i18n "minRead" | default "min read" }}
+          </span>
+          {{- end -}}
+
+          {{- $categories := slice -}}
+          {{- range .Params.categories -}}
+            {{- $category := . -}}
+            {{- if reflect.IsSlice $category -}}
+              {{- $categories = $categories | append $category -}}
+            {{- else -}}
+              {{- $categories = $categories | append $category -}}
+            {{- end -}}
+          {{- end -}}
+
+          {{- if $categories -}}
+          <span class="cat-links">
+            {{- range $index, $category := $categories -}}
+              {{- if gt $index 0 -}}, {{ end -}}
+              <a href="{{ ($.Site.GetPage (printf "/categories/%s" $category)).RelPermalink }}">{{ $category }}</a>
+            {{- end -}}
+          </span>
+          {{- end -}}
+        </div>
+      </footer>
+    </article>
+    {{- end -}}
+  </div>
+</div>
+
+<style>
+.page.archives .posts {
+  margin-top: 2rem;
+}
+
+.page.archives .post-entry {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-card);
+  color: var(--color-text);
+  box-shadow: 0 1px 3px var(--color-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.page.archives .post-entry:hover {
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.page.archives .entry-header {
+  margin-bottom: 1rem;
+}
+
+.page.archives .entry-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.page.archives .entry-title a {
+  color: var(--color-link);
+}
+
+.page.archives .entry-title a:hover {
+  color: var(--color-link-hover);
+}
+
+.page.archives .entry-content {
+  margin-bottom: 1rem;
+}
+
+.page.archives .entry-content p {
+  color: var(--color-text);
+}
+
+.page.archives .entry-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+}
+
+.page.archives .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.page.archives .meta a {
+  color: var(--color-link);
+}
+
+.page.archives .meta a:hover {
+  color: var(--color-link-hover);
+}
+
+@media (max-width: 768px) {
+  .page.archives .post-entry {
+    padding: 1rem;
+  }
+
+  .page.archives .meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+</style>
+
+
+{{- end }}
