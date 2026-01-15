@@ -188,13 +188,7 @@ markup:
     ordered: true
     startLevel: 2
   highlight:
-    noClasses: false
-    codeFences: true
-    guessSyntax: false
-    lineNoStart: 1
-    lineNos: true
-    lineNumbersInTable: true
-    tabWidth: 4
+    noClasses: true
 
 related:
   includeNewer: true
