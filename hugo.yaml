@@ -119,7 +119,7 @@ params:
     duration: -1
 
   mermaid:
-    enable: true
+    enable: false
 
   echarts:
     enable: true
